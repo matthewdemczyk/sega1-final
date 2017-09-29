@@ -375,9 +375,61 @@ public class LargeTest{
 		return endTime;
 	}
 
+public static long testRotatePointDesign2(int times){
+
+	Random r = new Random();
+	PointCPDesign2[] newPoints = new PointCPDesign2[times];
+	PointCPDesign2[] rotatedPoints = new PointCPDesign2[times];
+	long startTime, endTime;
+	
+	startTime = System.currentTimeMillis();
+
+	for (int i = 0; i < times; i ++){
+		newPoints[i] = new PointCPDesign2('P',i,i);
+		rotatedPoints[i]= newPoints[i].rotatePoint(r.nextInt(361));
+	}
+
+	endTime = System.currentTimeMillis() - startTime;
+
+	return endTime;
+} 
+
+public static long testRotatePointDesign3(int times){
+
+	Random r = new Random();
+	PointCPDesign3[] newPoints = new PointCPDesign3[times];
+	PointCPDesign3[] rotatedPoints = new PointCPDesign3[times];
+	long startTime, endTime;
+	
+	startTime = System.currentTimeMillis();
+
+	for (int i = 0; i < times; i ++){
+		newPoints[i] = new PointCPDesign3('C',i,i);
+		rotatedPoints[i]= newPoints[i].rotatePoint(r.nextInt(361));
+	}
+
+	endTime = System.currentTimeMillis() - startTime;
+
+	return endTime;
+} 
+
+
+
 
 	public static void main(String args[]){
-		int N; //set this to a number and pass it as an argument to the method you want to test
+		int N = 10000000; //set this to a number and pass it as an argument to the method you want to test
 		//add methods to test here, cleared the main method for submmision. this file is for documentation of the test methods we used
+
+		//System.out.println( "\n Testing rotatePoint for design3: "+ testRotatePointDesign3(N) + " ms\n");
+		System.out.println( "\n Testing rotatePoint for design2: "+ testRotatePointDesign2(N) + " ms\n");
+
+
+
+
+
+
+
+
 	}
 }
+
