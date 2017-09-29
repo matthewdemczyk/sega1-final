@@ -50,6 +50,51 @@ public class LargeTest{
 
 		return timeAfterOperation - timeBeforeOperation;
 	}
+
+	public static long testCreationOfPolarDesign2(int amountToCreate){
+		long timeBeforeOperation,timeAfterOperation;
+		timeBeforeOperation=System.currentTimeMillis();
+		PointCPDesign2 arrayPoints[] = new PointCPDesign2[amountToCreate];
+		for (int i=0; i<amountToCreate; i++){
+			arrayPoints[i] = new PointCPDesign2('P',i,i);
+		}
+		timeAfterOperation=System.currentTimeMillis();
+
+		return timeAfterOperation - timeBeforeOperation;
+	}
+	public static long testCreationOfCartesianDesign2(int amountToCreate){
+		long timeBeforeOperation,timeAfterOperation;
+		timeBeforeOperation=System.currentTimeMillis();
+		PointCPDesign2 arrayPoints[] = new PointCPDesign2[amountToCreate];
+		for (int i=0; i<amountToCreate; i++){
+			arrayPoints[i] = new PointCPDesign2('C',i,i);
+		}
+		timeAfterOperation=System.currentTimeMillis();
+
+		return timeAfterOperation - timeBeforeOperation;
+	}
+	public static long testCreationOfPolarDesign3(int amountToCreate){
+		long timeBeforeOperation,timeAfterOperation;
+		timeBeforeOperation=System.currentTimeMillis();
+		PointCPDesign3 arrayPoints[] = new PointCPDesign3[amountToCreate];
+		for (int i=0; i<amountToCreate; i++){
+			arrayPoints[i] = new PointCPDesign3('P',i,i);
+		}
+		timeAfterOperation=System.currentTimeMillis();
+
+		return timeAfterOperation - timeBeforeOperation;
+	}
+	public static long testCreationOfCartesianDesign3(int amountToCreate){
+		long timeBeforeOperation,timeAfterOperation;
+		timeBeforeOperation=System.currentTimeMillis();
+		PointCPDesign3 arrayPoints[] = new PointCPDesign3[amountToCreate];
+		for (int i=0; i<amountToCreate; i++){
+			arrayPoints[i] = new PointCPDesign3('C',i,i);
+		}
+		timeAfterOperation=System.currentTimeMillis();
+
+		return timeAfterOperation - timeBeforeOperation;
+	}
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -172,6 +217,64 @@ public class LargeTest{
 		timeAfterOperation=System.currentTimeMillis();
 		return timeAfterOperation - timeBeforeOperation;
 	}
+	//designs 2 and 3
+	public static long testRetreivingXYFromDesign2(int amountToCreate){
+		long timeBeforeOperation,timeAfterOperation;
+		timeBeforeOperation=System.currentTimeMillis();
+		PointCPDesign2 arrayPoints[] = new PointCPDesign2[amountToCreate];
+		double arrayPointsGetX[] = new double[amountToCreate];
+		double arrayPointsGetY[] = new double[amountToCreate];
+		for (int i=0; i<amountToCreate; i++){
+			arrayPoints[i] = new PointCPDesign2('P',i,i);
+			arrayPointsGetX[i] = arrayPoints[i].getX(); 
+			arrayPointsGetY[i] = arrayPoints[i].getY();
+		}
+		timeAfterOperation=System.currentTimeMillis();
+		return timeAfterOperation - timeBeforeOperation;
+	}
+	public static long testRetreivingRTFromDesign2(int amountToCreate){
+		long timeBeforeOperation,timeAfterOperation;
+		timeBeforeOperation=System.currentTimeMillis();
+		PointCPDesign2 arrayPoints[] = new PointCPDesign2[amountToCreate];
+		double arrayPointsGetX[] = new double[amountToCreate];
+		double arrayPointsGetY[] = new double[amountToCreate];
+		for (int i=0; i<amountToCreate; i++){
+			arrayPoints[i] = new PointCPDesign2('P',i,i);
+			arrayPointsGetX[i] = arrayPoints[i].getRho(); 
+			arrayPointsGetY[i] = arrayPoints[i].getTheta();
+		}
+		timeAfterOperation=System.currentTimeMillis();
+		return timeAfterOperation - timeBeforeOperation;
+	}
+	public static long testRetreivingXYFromDesign3(int amountToCreate){
+		long timeBeforeOperation,timeAfterOperation;
+		timeBeforeOperation=System.currentTimeMillis();
+		PointCPDesign3 arrayPoints[] = new PointCPDesign3[amountToCreate];
+		double arrayPointsGetX[] = new double[amountToCreate];
+		double arrayPointsGetY[] = new double[amountToCreate];
+		for (int i=0; i<amountToCreate; i++){
+			arrayPoints[i] = new PointCPDesign3('C',i,i);
+			arrayPointsGetX[i] = arrayPoints[i].getX(); 
+			arrayPointsGetY[i] = arrayPoints[i].getY();
+		}
+		timeAfterOperation=System.currentTimeMillis();
+		return timeAfterOperation - timeBeforeOperation;
+	}
+	public static long testRetreivingRTFromDesign3(int amountToCreate){
+		long timeBeforeOperation,timeAfterOperation;
+		timeBeforeOperation=System.currentTimeMillis();
+		PointCPDesign3 arrayPoints[] = new PointCPDesign3[amountToCreate];
+		double arrayPointsGetX[] = new double[amountToCreate];
+		double arrayPointsGetY[] = new double[amountToCreate];
+		for (int i=0; i<amountToCreate; i++){
+			arrayPoints[i] = new PointCPDesign3('C',i,i);
+			arrayPointsGetX[i] = arrayPoints[i].getRho(); 
+			arrayPointsGetY[i] = arrayPoints[i].getTheta();
+		}
+		timeAfterOperation=System.currentTimeMillis();
+		return timeAfterOperation - timeBeforeOperation;
+	}
+
 	////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////
 	//testing other methods below
@@ -375,61 +478,89 @@ public class LargeTest{
 		return endTime;
 	}
 
-public static long testRotatePointDesign2(int times){
-
-	Random r = new Random();
-	PointCPDesign2[] newPoints = new PointCPDesign2[times];
-	PointCPDesign2[] rotatedPoints = new PointCPDesign2[times];
-	long startTime, endTime;
+	public static long testGetDistancePolarDesign2(int times){   //finds distance between polar and polar
 	
-	startTime = System.currentTimeMillis();
+		PointCPDesign2 newPoints[] = new PointCPDesign2[times];
+		PointCPDesign2 otherPoints[] = new PointCPDesign2[times];
+		double distances[] = new double[times]; 
+		Random r = new Random();
+		long startTime, endTime;
 
-	for (int i = 0; i < times; i ++){
-		newPoints[i] = new PointCPDesign2('P',i,i);
-		rotatedPoints[i]= newPoints[i].rotatePoint(r.nextInt(361));
+		startTime = System.currentTimeMillis();
+
+		for (int i = 0; i < times; i++){
+
+				newPoints[i] = new PointCPDesign2('P', r.nextInt(times),r.nextInt(times));
+				otherPoints[i] = new PointCPDesign2('P', r.nextInt(times), r.nextInt(times));
+				distances[i]= newPoints[i].getDistance(otherPoints[i]);
+			}	
+		
+		endTime = System.currentTimeMillis() - startTime;
+		return endTime;
 	}
-
-	endTime = System.currentTimeMillis() - startTime;
-
-	return endTime;
-} 
-
-public static long testRotatePointDesign3(int times){
-
-	Random r = new Random();
-	PointCPDesign3[] newPoints = new PointCPDesign3[times];
-	PointCPDesign3[] rotatedPoints = new PointCPDesign3[times];
-	long startTime, endTime;
+	public static long testGetDistanceCartesianDesign3(int times){   //finds distance between cartesian and cartesian
 	
-	startTime = System.currentTimeMillis();
+		PointCPDesign3 newPoints[] = new PointCPDesign3[times];
+		PointCPDesign3 otherPoints[] = new PointCPDesign3[times];
+		double distances[] = new double[times]; 
+		Random r = new Random();
+		long startTime, endTime;
 
-	for (int i = 0; i < times; i ++){
-		newPoints[i] = new PointCPDesign3('C',i,i);
-		rotatedPoints[i]= newPoints[i].rotatePoint(r.nextInt(361));
+		startTime = System.currentTimeMillis();
+
+		for (int i = 0; i < times; i++){
+
+				newPoints[i] = new PointCPDesign3('C', r.nextInt(times),r.nextInt(times));
+				otherPoints[i] = new PointCPDesign3('C', r.nextInt(times), r.nextInt(times));
+				distances[i]= newPoints[i].getDistance(otherPoints[i]);
+			}	
+		
+		endTime = System.currentTimeMillis() - startTime;
+		return endTime;
 	}
+	public static long testRotatePointDesign2(int times){
 
-	endTime = System.currentTimeMillis() - startTime;
+		Random r = new Random();
+		PointCPDesign2[] newPoints = new PointCPDesign2[times];
+		PointCPDesign2[] rotatedPoints = new PointCPDesign2[times];
+		long startTime, endTime;
+		
+		startTime = System.currentTimeMillis();
 
-	return endTime;
-} 
+		for (int i = 0; i < times; i ++){
+			newPoints[i] = new PointCPDesign2('P',i,i);
+			rotatedPoints[i]= newPoints[i].rotatePoint(r.nextInt(361));
+		}
 
+		endTime = System.currentTimeMillis() - startTime;
+
+		return endTime;
+	} 
+
+	public static long testRotatePointDesign3(int times){
+
+		Random r = new Random();
+		PointCPDesign3[] newPoints = new PointCPDesign3[times];
+		PointCPDesign3[] rotatedPoints = new PointCPDesign3[times];
+		long startTime, endTime;
+		
+		startTime = System.currentTimeMillis();
+
+		for (int i = 0; i < times; i ++){
+			newPoints[i] = new PointCPDesign3('C',i,i);
+			rotatedPoints[i]= newPoints[i].rotatePoint(r.nextInt(361));
+		}
+
+		endTime = System.currentTimeMillis() - startTime;
+
+		return endTime;
+	} 
 
 
 
 	public static void main(String args[]){
-		int N = 10000000; //set this to a number and pass it as an argument to the method you want to test
+		int N=10000000; //set this to a number and pass it as an argument to the method you want to test
 		//add methods to test here, cleared the main method for submmision. this file is for documentation of the test methods we used
-
-		//System.out.println( "\n Testing rotatePoint for design3: "+ testRotatePointDesign3(N) + " ms\n");
-		System.out.println( "\n Testing rotatePoint for design2: "+ testRotatePointDesign2(N) + " ms\n");
-
-
-
-
-
-
-
-
+		System.out.println("Testing method get distance from 10,000,000 Design2:" + testGetDistancePolarDesign2(N) + " ms");
 	}
 }
-
